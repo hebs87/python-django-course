@@ -3,8 +3,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    context = {"description": "This is a word count site"}
-    return render(request, "home.html", context)
+    return render(request, "home.html",)
 
 
 def dogs(request):
