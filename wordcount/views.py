@@ -37,3 +37,7 @@ def count(request):
         "sortedWords": sortedWords,
         }
     return render(request, "count.html", context)
+
+
+def about(request):
+    return render(request, "about.html")
