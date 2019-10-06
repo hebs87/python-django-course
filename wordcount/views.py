@@ -13,5 +13,21 @@ def count(request):
     # Count the number of words
     count = len(wordlist)
 
-    context = {"fulltext": fulltext, "count": count}
+    # Create empty dict and if the word appears,
+    # add it to the dict and set count as 1.
+    # If the word is already in the dict,
+    # increment existing count
+    wordDict = {}
+    for word in wordlist:
+        if word in wordDict:
+            wordDict[word] += 1
+        else:
+            wordDict[word] = 1
+
+    context = {
+        "fulltext": fulltext,
+        "count": count,
+        # Change the wordDict to a list to enable HTML injection
+        "wordDict": wordDict.items(),
+        }
     return render(request, "count.html", context)
