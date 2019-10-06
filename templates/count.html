@@ -16,7 +16,7 @@
     <p>{{ fulltext }}</p>
 
     <h4>Word Count:</h4>
-    {% for word, counttotal in wordDict %}
+    {% for word, counttotal in sortedWords %}
         <p>{{ word }}: {{ counttotal }}</p>
     {% endfor %}
 

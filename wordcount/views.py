@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+import operator
 
 
 def home(request):
@@ -24,10 +25,16 @@ def count(request):
         else:
             wordDict[word] = 1
 
+    # Sort the words based on the key (counttotal)
+    # Reverse the order, so we go from high to low
+    sortedWords = sorted(wordDict.items(),
+                         key=operator.itemgetter(1),
+                         reverse=True)
+
     context = {
         "fulltext": fulltext,
         "count": count,
         # Change the wordDict to a list to enable HTML injection
-        "wordDict": wordDict.items(),
+        "sortedWords": sortedWords,
         }
     return render(request, "count.html", context)
