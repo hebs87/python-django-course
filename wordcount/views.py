@@ -7,4 +7,11 @@ def home(request):
 
 
 def count(request):
-    return render(request, "count.html")
+    fulltext = request.GET['fulltext']
+    # Split the text into strings wherever there is a space
+    wordlist = fulltext.split()
+    # Count the number of words
+    count = len(wordlist)
+
+    context = {"fulltext": fulltext, "count": count}
+    return render(request, "count.html", context)
