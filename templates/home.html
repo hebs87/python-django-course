@@ -9,6 +9,7 @@
 <body>
 
     <h1>Word Count</h1>
+    <p>Go to the <a href="{% url 'about' %}">About</a> page to find out more about this site!</p>
     <form action="{% url 'count' %}">
         <textarea name="fulltext" cols="40" rows="10"></textarea>
         <br/>
